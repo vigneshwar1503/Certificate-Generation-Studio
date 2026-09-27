@@ -8,6 +8,7 @@ import XLSX from 'xlsx';
 
 import {
   initDB,
+  get,
   getSettings,
   updateSettings,
   getNextInternId,

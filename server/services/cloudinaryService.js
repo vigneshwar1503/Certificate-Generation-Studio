@@ -1,4 +1,4 @@
-const cloudinary = require('cloudinary').v2;
+import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -16,12 +16,13 @@ const uploadPdfBuffer = (buffer) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       {
         resource_type: 'raw',
-        format: 'pdf'
+        format: 'pdf',
       },
       (error, result) => {
         if (error) {
           return reject(error);
         }
+
         resolve(result.secure_url);
       }
     );
@@ -30,6 +31,6 @@ const uploadPdfBuffer = (buffer) => {
   });
 };
 
-module.exports = {
+export default {
   uploadPdfBuffer,
 };
